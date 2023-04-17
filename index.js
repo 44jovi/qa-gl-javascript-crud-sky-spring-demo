@@ -15,6 +15,23 @@ console.log("SCRIPT START");
   }
 
   getAll();
+
+  const testPerson = {
+    fullName: "Joe Joeson",
+    oldNess: 44,
+    occupation: "Chief Joe Officer",
+    notNiNumber: "CHIEF0000",
+  };
+
+  async function createTestPerson() {
+    try {
+      await axios.post(url + "/create", testPerson);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  createTestPerson();
 })();
 
 console.log("SCRIPT END");
