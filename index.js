@@ -1,19 +1,20 @@
 console.log("SCRIPT START");
 
 (function () {
-  // WIP
-
   const url = "http://localhost:8080";
 
-  async function getData() {
+  async function getAll() {
     try {
-      const data = await axios.get(url + "/");
+      const data = await axios.get(url + "/getAll/");
+      console.log("returned data: ");
       console.log(data);
+      return data.data;
     } catch (error) {
       console.log(error);
     }
   }
-  getData();
+
+  getAll();
 })();
 
 console.log("SCRIPT END");
