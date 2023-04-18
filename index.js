@@ -73,6 +73,7 @@ console.log("SCRIPT START");
 
       try {
         const res = await axios.post(url + "/create", newPerson);
+        getPersons();
       } catch (error) {
         console.error(error);
       }
