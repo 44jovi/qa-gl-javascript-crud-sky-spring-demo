@@ -83,6 +83,32 @@ console.log("SCRIPT START");
       }
     });
 
+  async function testUpdate() {
+    try {
+      const res1 = await axios.get(url + "/getAll");
+      const allData = res1.data;
+      const allDataLength = allData.length;
+      const lastID = allData[allDataLength - 1].id;
+
+      const testUpdateBody = {
+        // id: lastID,
+        name: "MY NAME ",
+        age: 0,
+        job: "MY JOB ",
+      };
+
+      // the null parameter is the body of the request?
+      const res2 = await axios.patch(url + "/update/" + lastID, null, {
+        params: testUpdateBody,
+      });
+      console.log(res2);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  testUpdate();
+
   getPersons();
 })();
 
