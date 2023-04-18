@@ -1,0 +1,21 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+}
+
+form {
+  background-color: yellow;
+  color: black;
+}
+
+button {
+  background-color: black;
+  color: white;
+}
+
+#displayPersons {
+  background-color: yellow;
+  color: black;
+}
