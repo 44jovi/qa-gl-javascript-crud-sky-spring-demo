@@ -1,20 +1,30 @@
 console.log("SCRIPT START");
 
 (function () {
+  const displayPersons = document.getElementById("displayPersons");
   const url = "http://localhost:8080";
 
-  async function getAll() {
+  // async function getAll() {
+  //   try {
+  //     const data = await axios.get(url + "/getAll/");
+  //     console.log("returned data: ");
+  //     console.log(data);
+  //     return data.data;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  async function getPeople() {
     try {
-      const data = await axios.get(url + "/getAll/");
-      console.log("returned data: ");
-      console.log(data);
-      return data.data;
+      displayPersons.innerHTML = "";
+      const res = await axios.get(url + "getAll");
+
+      res.data.forEach((person) => renderPerson(person));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
-
-  getAll();
 
   document
     .getElementById("personForm")
