@@ -63,10 +63,10 @@ console.log("SCRIPT START");
 
       // keys MUST match what the API is expecting
       const newPerson = {
-        fullName: pName.value,
-        oldNess: age.value,
-        occupation: job.value,
-        notNiNumber: NINum.value,
+        fullName: fullName.value,
+        oldNess: oldNess.value,
+        occupation: occupation.value,
+        notNiNumber: notNiNumber.value,
       };
 
       this.reset();
