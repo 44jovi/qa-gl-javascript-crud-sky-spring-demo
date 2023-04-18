@@ -92,9 +92,9 @@ console.log("SCRIPT START");
 
       const testUpdateBody = {
         // id: lastID,
-        name: "MY NAME ",
+        name: "MY NAME CHANGED",
         age: 0,
-        job: "MY JOB ",
+        job: "MY JOB CHANGED ",
       };
 
       // the null parameter is the body of the request?
