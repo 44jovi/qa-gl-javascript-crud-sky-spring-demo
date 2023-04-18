@@ -4,17 +4,6 @@ console.log("SCRIPT START");
   const displayPersons = document.getElementById("displayPersons");
   const url = "http://localhost:8080";
 
-  // async function getAll() {
-  //   try {
-  //     const data = await axios.get(url + "/getAll/");
-  //     console.log("returned data: ");
-  //     console.log(data);
-  //     return data.data;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   async function getPersons() {
     try {
       displayPersons.innerHTML = "";
@@ -24,10 +13,12 @@ console.log("SCRIPT START");
       console.error(error);
     }
   }
-  // TODO: check if these variable names have to match with data returned
-  // Order does not seem to matter, as long as variable name matches
+  // Variables order does not seem to matter, as long as names match
   function renderPerson({ fullName, oldNess, occupation, notNiNumber, id }) {
-    const person = document.createElement("div");
+    const personCard = document.createElement("div");
+    personCard.id = "personCard";
+    const personCardBody = document.createElement("div");
+    personCardBody.id = "personCardBody";
 
     const personFullName = document.createElement("p");
     personFullName.innerHTML = `Name: ${fullName}`;
@@ -44,13 +35,26 @@ console.log("SCRIPT START");
     const personID = document.createElement("p");
     personID.innerHTML = `ID: ${id}`;
 
-    person.appendChild(personID);
-    person.appendChild(personFullName);
-    person.appendChild(personOldNess);
-    person.appendChild(personOccupation);
-    person.appendChild(personNotNiNumber);
+    personCardBody.appendChild(personID);
+    personCardBody.appendChild(personFullName);
+    personCardBody.appendChild(personOldNess);
+    personCardBody.appendChild(personOccupation);
+    personCardBody.appendChild(personNotNiNumber);
 
-    displayPersons.appendChild(person);
+    const deleteBtn = document.createElement("button");
+    deleteBtn.id = "deleteButton";
+    deleteBtn.innerText = "X";
+    deleteBtn.addEventListener("click", () => deletePerson(id));
+    personCard.appendChild(deleteBtn);
+    personCard.appendChild(personCardBody);
+
+    personCard.appendChild(personCardBody);
+    displayPersons.appendChild(personCard);
+  }
+
+  async function deletePerson(id) {
+    const res = await axios.delete(url + "/remove/" + id);
+    getPersons();
   }
 
   document
