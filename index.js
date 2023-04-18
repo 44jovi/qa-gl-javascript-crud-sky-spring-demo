@@ -39,7 +39,7 @@ console.log("SCRIPT START");
     personOccupation.innerHTML = `Job: ${occupation}`;
 
     const personNotNiNumber = document.createElement("p");
-    personNotNiNumber.innerHTML = `NI Number: ${notNiNumber}`;
+    personNotNiNumber.innerHTML = `NI Number: none of your business`;
 
     const personID = document.createElement("p");
     personID.innerHTML = `ID: ${id}`;
