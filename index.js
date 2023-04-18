@@ -16,22 +16,30 @@ console.log("SCRIPT START");
 
   getAll();
 
-  // const testPerson = {
-  //   fullName: "Joe Joeson",
-  //   oldNess: 44,
-  //   occupation: "Chief Joe Officer",
-  //   notNiNumber: "CHIEF0000",
-  // };
+  document
+    .getElementById("personForm")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-  // async function createTestPerson() {
-  //   try {
-  //     await axios.post(url + "/create", testPerson);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+      // target each input element of the "personForm"
+      const { pName, age, job, NINum } = this;
 
-  createTestPerson();
+      // keys MUST match what the API is expecting
+      const newPerson = {
+        fullName: pName.value,
+        oldNess: age.value,
+        occupation: job.value,
+        notNiNumber: NINum.value,
+      };
+
+      this.reset();
+
+      try {
+        const res = await axios.post(url + "/create", newPerson);
+      } catch (error) {
+        console.error(error);
+      }
+    });
 })();
 
 console.log("SCRIPT END");
