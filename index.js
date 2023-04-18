@@ -15,15 +15,42 @@ console.log("SCRIPT START");
   //   }
   // }
 
-  async function getPeople() {
+  async function getPersons() {
     try {
       displayPersons.innerHTML = "";
-      const res = await axios.get(url + "getAll");
-
+      const res = await axios.get(url + "/getAll");
       res.data.forEach((person) => renderPerson(person));
     } catch (error) {
       console.error(error);
     }
+  }
+  // TODO: check if these variable names have to match with data returned
+  // Order does not seem to matter, as long as variable name matches
+  function renderPerson({ fullName, oldNess, occupation, notNiNumber, id }) {
+    const person = document.createElement("div");
+
+    const personFullName = document.createElement("p");
+    personFullName.innerHTML = `Name: ${fullName}`;
+
+    const personOldNess = document.createElement("p");
+    personOldNess.innerHTML = `Age: ${oldNess}`;
+
+    const personOccupation = document.createElement("p");
+    personOccupation.innerHTML = `Job: ${occupation}`;
+
+    const personNotNiNumber = document.createElement("p");
+    personNotNiNumber.innerHTML = `NI Number: ${notNiNumber}`;
+
+    const personID = document.createElement("p");
+    personID.innerHTML = `ID: ${id}`;
+
+    person.appendChild(personID);
+    person.appendChild(personFullName);
+    person.appendChild(personOldNess);
+    person.appendChild(personOccupation);
+    person.appendChild(personNotNiNumber);
+
+    displayPersons.appendChild(person);
   }
 
   document
@@ -32,7 +59,7 @@ console.log("SCRIPT START");
       event.preventDefault();
 
       // target each input element of the "personForm"
-      const { pName, age, job, NINum } = this;
+      const { fullName, oldNess, occupation, notNiNumber } = this;
 
       // keys MUST match what the API is expecting
       const newPerson = {
@@ -50,6 +77,8 @@ console.log("SCRIPT START");
         console.error(error);
       }
     });
+
+  getPersons();
 })();
 
 console.log("SCRIPT END");
