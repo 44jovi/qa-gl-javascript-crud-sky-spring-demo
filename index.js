@@ -45,7 +45,7 @@ console.log("SCRIPT START");
     deleteBtn.id = "deleteButton";
     deleteBtn.innerText = "X";
     deleteBtn.addEventListener("click", () => deletePerson(id));
-    personCardBody.appendChild(deleteBtn);
+    personCard.appendChild(deleteBtn);
     personCard.appendChild(personCardBody);
 
     personCard.appendChild(personCardBody);
