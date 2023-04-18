@@ -6,9 +6,13 @@ body {
   color: white;
 }
 
+#displayPersons {
+  margin: 1%;
+}
+
 form {
-  background-color: fuchsia;
-  color: black;
+  background-color: black;
+  color: yellow;
   padding: 1%;
 }
 
@@ -43,10 +47,11 @@ button {
 
 #personCard {
   border-style: solid;
-  border-width: 5px;
+  border-width: 1rem;
   border-color: black;
   background-color: yellow;
-  width: 49%;
+  width: 25%;
   float: left;
-  margin: auto;
+  width: 40%;
+  padding: 2%;
 }
