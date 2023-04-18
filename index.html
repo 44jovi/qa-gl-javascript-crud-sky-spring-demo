@@ -6,9 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>People</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <script defer src="index.js"></script>
   </head>
   <body>
-    <div id="myOutput"></div>
+    <form id="personForm">
+       <label>Name:</label>
+       <input type="text" name="fullName" required></input>
+       <label>Age:</label>
+       <input type="number" name="oldNess" required></input>       
+       <label>Job:</label>
+       <input type="text" name="occupation" required></input>
+       <label>NI Number:</label>
+       <input type="text" name="notNiNumber" required></input>
+       <button type="submit">SUBMIT</button>
+    </form>
+    <div id="displayPersons"></div>
   </body>
 </html>
