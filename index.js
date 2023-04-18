@@ -41,8 +41,20 @@ console.log("SCRIPT START");
     personCardBody.appendChild(personOccupation);
     personCardBody.appendChild(personNotNiNumber);
 
+    const deleteBtn = document.createElement("button");
+    deleteBtn.id = "deleteButton";
+    deleteBtn.innerText = "X";
+    deleteBtn.addEventListener("click", () => deletePerson(id));
+    personCardBody.appendChild(deleteBtn);
+    personCard.appendChild(personCardBody);
+
     personCard.appendChild(personCardBody);
     displayPersons.appendChild(personCard);
+  }
+
+  async function deletePerson(id) {
+    const res = await axios.delete(url + "/remove/" + id);
+    getPersons();
   }
 
   document
